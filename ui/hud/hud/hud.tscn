@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctyvfsifwnv4a"]
+
+[ext_resource type="Script" path="res://ui/hud/hud/hud.gd" id="1_p2n3v"]
+[ext_resource type="Texture2D" uid="uid://cxc0eg6ywmqi5" path="res://assets/background.png" id="1_wa7h8"]
+[ext_resource type="Theme" uid="uid://cbhta3xnddq8t" path="res://styles/main.theme" id="2_p4kr4"]
+[ext_resource type="PackedScene" uid="uid://mkrc2f0un8g8" path="res://ui/hud/stage_counter/stage_counter.tscn" id="4_yyy87"]
+[ext_resource type="Texture2D" uid="uid://dfoxeyqgynyxa" path="res://assets/apple_ico.png" id="5_bdks8"]
+[ext_resource type="PackedScene" uid="uid://du1r54j646iev" path="res://ui/hud/knives_counter/knives_counter.tscn" id="7_dih0q"]
+[ext_resource type="Script" path="res://ui/hud/knives_counter/knives_counter.gd" id="8_hhj72"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_p2n3v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -6
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wa7h8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_p4kr4")
+text = "<HOME"
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_p4kr4")
+text = "0"
+
+[node name="StageCounter" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_yyy87")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ApplesCounter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ApplesCounter"]
+layout_mode = 2
+theme = ExtResource("2_p4kr4")
+text = "0
+"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/ApplesCounter"]
+custom_minimum_size = Vector2(0, 95)
+layout_mode = 2
+texture = ExtResource("5_bdks8")
+stretch_mode = 4
+
+[node name="StageLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_p4kr4")
+text = "STAGE 1"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="KnivesCounter" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("7_dih0q")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("8_hhj72")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://di8lvyc6gnus"]
+
+[ext_resource type="Script" path="res://ui/start_screen/start_screen.gd" id="1_q47x2"]
+[ext_resource type="Theme" uid="uid://cbhta3xnddq8t" path="res://styles/main.theme" id="2_e4553"]
+[ext_resource type="Texture2D" uid="uid://cso6wdxm7tlg8" path="res://assets/knife1.png" id="3_6rkrx"]
+[ext_resource type="StyleBox" uid="uid://cli52w8ykr52c" path="res://styles/start_screen.tres" id="4_nxtl2"]
+[ext_resource type="Texture2D" uid="uid://dl8yjyw3eu6tm" path="res://assets/gift-ico.png" id="5_3piir"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q47x2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.997
+anchor_bottom = 0.997
+offset_right = 0.159973
+offset_bottom = 0.23999
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("2_e4553")
+theme_override_font_sizes/font_size = 130
+text = "KNIFE HIT 2.0"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_6rkrx")
+stretch_mode = 5
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_e4553")
+theme_override_colors/font_color = Color(0.592157, 0.270588, 0.988235, 1)
+theme_override_styles/normal = ExtResource("4_nxtl2")
+theme_override_styles/hover = ExtResource("4_nxtl2")
+theme_override_styles/pressed = ExtResource("4_nxtl2")
+theme_override_styles/disabled = ExtResource("4_nxtl2")
+theme_override_styles/focus = ExtResource("4_nxtl2")
+text = "PLAY"
+
+[node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("5_3piir")
+stretch_mode = 5
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer3/TextureButton" to="." method="_on_texture_button_pressed"]

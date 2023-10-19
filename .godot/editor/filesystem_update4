@@ -1,0 +1,4 @@
+res://elements/soundplayer/sound_player_node.tscn
+res://ui/hud/stage_counter/stage_counter.gd
+res://elements/soundplayer/sound_player.tscn
+res://core/globals.gd

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gnsuqkh35nu6"]
+
+[ext_resource type="PackedScene" uid="uid://dbf7wgwcnxflp" path="res://elements/soundplayer/sound_player.tscn" id="1_hooht"]
+[ext_resource type="Script" path="res://elements/soundplayer/sound_player.gd" id="2_jfyye"]
+
+[node name="SoundPlayerNode" type="Node"]
+
+[node name="SoundPlayer" parent="." instance=ExtResource("1_hooht")]
+script = ExtResource("2_jfyye")

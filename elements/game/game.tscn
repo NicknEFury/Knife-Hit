@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bthl85qcl861r"]
+
+[ext_resource type="Script" path="res://elements/game/game.gd" id="1_xx560"]
+[ext_resource type="PackedScene" uid="uid://bd5tiynsw02gw" path="res://elements/knife/knife_shooter.tscn" id="2_18405"]
+[ext_resource type="PackedScene" uid="uid://b7crduflerdd7" path="res://ui/restart_overlay/restart_overlay.tscn" id="4_avpbs"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_xx560")
+
+[node name="KnifeShooter" parent="." instance=ExtResource("2_18405")]
+position = Vector2(0, 322)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RestartOverlay" parent="." instance=ExtResource("4_avpbs")]
+visible = false
+
+[node name="TargetPosition" type="Marker2D" parent="."]
+position = Vector2(0, -184)

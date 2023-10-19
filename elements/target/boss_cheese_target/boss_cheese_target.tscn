@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://gdtm21psnody"]
+
+[ext_resource type="PackedScene" uid="uid://httgg4srfnjt" path="res://elements/target/target.tscn" id="1_hvkfm"]
+[ext_resource type="Script" path="res://elements/target/boss_cheese_target/boss_cheese_target.gd" id="2_byfaa"]
+[ext_resource type="Texture2D" uid="uid://cvijg1s7bhscv" path="res://assets/target4.png" id="3_le2dn"]
+[ext_resource type="Texture2D" uid="uid://d02dqah0igmoq" path="res://assets/target4_1.png" id="4_anpui"]
+[ext_resource type="Texture2D" uid="uid://cvkm5p8fv0cl7" path="res://assets/target4_3.png" id="5_467cw"]
+[ext_resource type="Texture2D" uid="uid://dnh2g8gh5m7w7" path="res://assets/target4_2.png" id="6_es3cf"]
+
+[sub_resource type="Animation" id="Animation_vidb3"]
+length = 0.001
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.00713]
+}
+
+[sub_resource type="Animation" id="Animation_f430k"]
+resource_name = "boss_cheese_rotation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.3, 1.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 0.5, 1),
+"update": 0,
+"values": [0.0, -2.00713, -2.26893, 6.28319, 18.8496]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8oxh"]
+_data = {
+"RESET": SubResource("Animation_vidb3"),
+"boss_cheese_rotation": SubResource("Animation_f430k")
+}
+
+[node name="boss_cheese_target" instance=ExtResource("1_hvkfm")]
+script = ExtResource("2_byfaa")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_le2dn")
+
+[node name="TargetParticles2D" parent="." index="3"]
+texture = ExtResource("4_anpui")
+
+[node name="TargetParticles2D2" parent="." index="4"]
+texture = ExtResource("5_467cw")
+
+[node name="TargetParticles2D3" parent="." index="5"]
+texture = ExtResource("6_es3cf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+autoplay = "boss_cheese_rotation"
+libraries = {
+"": SubResource("AnimationLibrary_m8oxh")
+}
